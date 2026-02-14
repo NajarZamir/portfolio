@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Najar Zamir - Creative Web Developer & AI Expert</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyan: {
+                            400: '#22d3ee',
+                            500: '#06b6d4',
+                            600: '#0891b2',
+                        },
+                        purple: {
+                            400: '#c084fc',
+                            500: '#a855f7',
+                        },
+                        gray: {
+                            950: '#0a0a0a',
+                            900: '#1a1a1a',
+                            800: '#262626',
+                            700: '#3f3f46',
+                            600: '#52525b',
+                            400: '#a1a1aa',
+                            200: '#e4e4e7',
+                        }
+                    },
+                    boxShadow: {
+                        '3d': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            },
+            plugins: [
+                function({ addUtilities, theme }) {
+                    addUtilities({
+                        '.text-glow-cyan': {
+                            'text-shadow': `0 0 15px ${theme('colors.cyan.500')}99`, // ~60% opacity
+                        },
+                        '.text-glow-purple': {
+                            'text-shadow': `0 0 15px ${theme('colors.purple.500')}99`,
+                        },
+                        '.focus-glow-cyan:focus': {
+                            'box-shadow': `0 0 10px ${theme('colors.cyan.500')}80`, // ~50% opacity
+                            'border-color': theme('colors.cyan.400'),
+                        },
+                    }, ['responsive', 'hover', 'focus'])
+                }
+            ]
+        }
+    </script>
+    <style>
+        /* Custom styles for accessibility/fallback for text-shadow, not directly Tailwind */
+        /* This is for browsers that might not support CSS variables or specific text-shadow syntax well with Tailwind CDN */
+        /* For the most part, Tailwind's classes are sufficient */
+    </style>
+</head>
+<body class="bg-gray-950 text-gray-200 font-sans antialiased">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 w-full bg-gray-950/80 backdrop-blur-md z-50 shadow-lg border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <a href="#" class="text-2xl font-bold text-cyan-400 hover:text-cyan-300 transition-colors duration-300 ease-in-out">Najar Zamir</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#hero" class="text-gray-300 hover:text-cyan-400 transition-colors duration-300 ease-in-out py-2 px-3 rounded-md text-sm font-medium">Home</a>
+                    <a href="#skills" class="text-gray-300 hover:text-cyan-400 transition-colors duration-300 ease-in-out py-2 px-3 rounded-md text-sm font-medium">Skills</a>
+                    <a href="#tools" class="text-gray-300 hover:text-cyan-400 transition-colors duration-300 ease-in-out py-2 px-3 rounded-md text-sm font-medium">Tools</a>
+                    <a href="#projects" class="text-gray-300 hover:text-cyan-400 transition-colors duration-300 ease-in-out py-2 px-3 rounded-md text-sm font-medium">Projects</a>
+                    <a href="#experience" class="text-gray-300 hover:text-cyan-400 transition-colors duration-300 ease-in-out py-2 px-3 rounded-md text-sm font-medium">Experience</a>
+                    <a href="#qualifications" class="text-gray-300 hover:text-cyan-400 transition-colors duration-300 ease-in-out py-2 px-3 rounded-md text-sm font-medium">Qualifications</a>
+                    <a href="#contact" class="text-gray-300 hover:text-cyan-400 transition-colors duration-300 ease-in-out py-2 px-3 rounded-md text-sm font-medium">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-400">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 border-t border-white/10">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#hero" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition-colors duration-300 ease-in-out">Home</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition-colors duration-300 ease-in-out">Skills</a>
+                <a href="#tools" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition-colors duration-300 ease-in-out">Tools</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition-colors duration-300 ease-in-out">Projects</a>
+                <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition-colors duration-300 ease-in-out">Experience</a>
+                <a href="#qualifications" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition-colors duration-300 ease-in-out">Qualifications</a>
+                <a href="#certifications" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition-colors duration-300 ease-in-out">Certifications</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition-colors duration-300 ease-in-out">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24">
+        <!-- Hero Section -->
+        <section id="hero" class="relative py-12 md:py-20 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center md:items-start text-center md:text-left">
+                <div class="relative w-64 h-64 md:w-80 md:h-80 flex-shrink-0 mb-8 md:mb-0 md:mr-12 rounded-2xl overflow-hidden shadow-[0_0_25px_theme(colors.cyan.500/0.3)] hover:shadow-[0_0_35px_theme(colors.cyan.500/0.5)] transition-all duration-300 ease-in-out">
+                    <img src="https://raw.githubusercontent.com/Najar-Zamir/my-images/main/profile.jpeg">
+                </div>
+                <div class="flex-grow">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-4">
+                        Hi, I'm <span class="text-cyan-400">Najar Zamir</span>
+                    </h1>
+                    <p class="text-xl sm:text-2xl md:text-3xl font-light text-purple-400 mb-4 transition-all duration-500 ease-in-out transform">
+                        <span id="animated-profession">Creative Web Developer & AI Expert</span>
+                    </p>
+                    <p class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-cyan-400 mb-6 text-glow-cyan">
+                        Building Smart, Beautiful & User-Focused Digital Products
+                    </p>
+                    <p class="text-base sm:text-lg text-gray-300 leading-relaxed mb-8">
+                        I’m a multidisciplinary creator specializing in modern web development, AI-powered solutions, UI/UX design, graphic design, video editing, photography, and sketch art. I blend creativity with technology to build meaningful digital experiences.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4 mb-8">
+                        <a href="#contact" class="inline-block px-8 py-3 bg-cyan-600 text-white font-semibold rounded-lg shadow-md hover:bg-cyan-500 hover:shadow-[0_0_15px_theme(colors.cyan.500/0.7)] hover:-translate-y-1 transition-all duration-300 ease-in-out">
+                            Hire Me
+                        </a>
+                        <a href="#projects" class="inline-block px-8 py-3 bg-purple-600 text-white font-semibold rounded-lg shadow-md hover:bg-purple-500 hover:shadow-[0_0_15px_theme(colors.purple.500/0.7)] hover:-translate-y-1 transition-all duration-300 ease-in-out">
+                            View Portfolio
+                        </a>
+                    </div>
+                    <div class="flex justify-center md:justify-start gap-6 mt-6">
+                        
+                            <a href="https://github.com/Najar-Zamir" target="_blank" rel="noopener noreferrer" class="social-icon">
+                                <svg role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-400 hover:text-cyan-400 transition-colors duration-300 ease-in-out">
+                                    <title>GitHub</title>
+                                    <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                                </svg>
+                            </a>
+                        
+                            <a href="https://in.linkedin.com/in/najar-zamir-035525271" target="_blank" rel="noopener noreferrer" class="social-icon">
+                                <svg role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-400 hover:text-cyan-400 transition-colors duration-300 ease-in-out">
+                                    <title>LinkedIn</title>
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
+                                </svg>
+                            </a>
+                        
+                            <a href="https://x.com/najar_zamir" target="_blank" rel="noopener noreferrer" class="social-icon">
+                                <svg role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-400 hover:text-cyan-400 transition-colors duration-300 ease-in-out">
+                                    <title>X</title>
+                                    <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.931ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>
+                                </svg>
+                            </a>
+                        
+                            <a href="https://www.instagram.com/zahid_ayoub_najar?igsh=aWlheDA1NmNudnIz" target="_blank" rel="noopener noreferrer" class="social-icon">
+                                <svg role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-400 hover:text-cyan-400 transition-colors duration-300 ease-in-out">
+                                    <title>Instagram</title>
+                                    <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.06 1.17-.249 1.805-.413 2.227-.217.562-.477.96-.896 1.382-.42.419-.82.679-1.38.896-.423.164-1.06.36-2.23.413-1.266.057-1.646.07-4.85.07s-3.585-.015-4.85-.074c-1.17-.06-1.805-.249-2.227-.413-.562-.217-.96-.477-1.382-.896-.419-.42-.679-.82-1.381-.896-.164-.423-.36-1.06-.413-2.23-.057-1.266-.07-1.646-.07-4.85s.015-3.585.07-4.85c.055-1.17.249-1.805.413-2.227.217.562.477.96.896-1.382.42-.419.819-.679 1.381-.896.422-.164 1.057-.36 2.227-.413C8.415 2.175 8.797 2.16 12 2.16zm0 5.48c-2.49 0-4.508 2.019-4.508 4.508s2.019 4.508 4.508 4.508 4.508-2.019 4.508-4.508-2.019-4.508-4.508-4.508zm0 7.33c-1.554 0-2.822-1.268-2.822-2.822s1.268-2.822 2.822-2.822 2.822 1.268 2.822 2.822-1.268 2.822-2.822 2.822zm5.738-8.402c-.75 0-1.36-.61-1.36-1.36s.61-1.36 1.36-1.36 1.36.61 1.36 1.36-.61 1.36-1.36 1.36z"/>
+                                </svg>
+                            </a>
+                        
+                            <a href="https://wa.me/918492968959" target="_blank" rel="noopener noreferrer" class="social-icon">
+                                <svg role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-400 hover:text-cyan-400 transition-colors duration-300 ease-in-out">
+                                    <title>WhatsApp</title>
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.052 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.204-1.634a11.815 11.815 0 005.792 1.506h.004c6.557 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                                </svg>
+                            </a>
+                        
+                            <a href="https://www.snapchat.com/add/najar.zamir?share_id=2K8k4nZQBjE&locale=en-GB" target="_blank" rel="noopener noreferrer" class="social-icon">
+                                <svg role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-400 hover:text-cyan-400 transition-colors duration-300 ease-in-out">
+                                    <title>Snapchat</title>
+                                    <path d="M1.332 2.405C1.374.801 2.762 0 2.762 0L12 4.445 21.238 0S22.626.801 22.668 2.405c.05 1.956-1.058 8.03-5.223 12.333-3.037 3.14-6.133 2.83-6.133 2.83s-.205.082-.489.082a1.86 1.86 0 0 1-.488-.082s-3.097.31-6.134-2.83C2.39 10.435 1.282 4.36 1.332 2.405z"/>
+                                </svg>
+                            </a>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl sm:text-4xl font-bold text-center text-purple-400 mb-12 relative z-10">
+                    <span class="relative inline-block pb-2">
+                        Skills
+                        <span class="absolute bottom-0 left-0 w-full h-1 bg-cyan-400 rounded-full"></span>
+                    </span>
+                </h2>
+                <div class="flex flex-wrap justify-center gap-4">
+                    
+                        <div class="bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-lg p-2 px-4 shadow-md text-gray-300 hover:shadow-[0_0_15px_theme(colors.cyan.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out text-sm">
+                            Programming language and Coding
+                        </div>
+                    
+                        <div class="bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-lg p-2 px-4 shadow-md text-gray-300 hover:shadow-[0_0_15px_theme(colors.cyan.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out text-sm">
+                            Database management
+                        </div>
+                    
+                        <div class="bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-lg p-2 px-4 shadow-md text-gray-300 hover:shadow-[0_0_15px_theme(colors.cyan.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out text-sm">
+                            UI/UX and Graphic Designing
+                        </div>
+                    
+                        <div class="bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-lg p-2 px-4 shadow-md text-gray-300 hover:shadow-[0_0_15px_theme(colors.cyan.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out text-sm">
+                            Algorithm and Analysis
+                        </div>
+                    
+                        <div class="bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-lg p-2 px-4 shadow-md text-gray-300 hover:shadow-[0_0_15px_theme(colors.cyan.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out text-sm">
+                            Software troubleshooting
+                        </div>
+                    
+                        <div class="bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-lg p-2 px-4 shadow-md text-gray-300 hover:shadow-[0_0_15px_theme(colors.cyan.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out text-sm">
+                            Prompt Engineering
+                        </div>
+                    
+                        <div class="bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-lg p-2 px-4 shadow-md text-gray-300 hover:shadow-[0_0_15px_theme(colors.cyan.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out text-sm">
+                            E-commerce analytics
+                        </div>
+                    
+                        <div class="bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-lg p-2 px-4 shadow-md text-gray-300 hover:shadow-[0_0_15px_theme(colors.cyan.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out text-sm">
+                            Video and Photo Editing
+                        </div>
+                    
+                        <div class="bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-lg p-2 px-4 shadow-md text-gray-300 hover:shadow-[0_0_15px_theme(colors.cyan.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out text-sm">
+                            Product listing management
+                        </div>
+                    
+                        <div class="bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-lg p-2 px-4 shadow-md text-gray-300 hover:shadow-[0_0_15px_theme(colors.cyan.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out text-sm">
+                            Photography
+                        </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Tools Section -->
+        <section id="tools" class="py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl sm:text-4xl font-bold text-center text-purple-400 mb-12 relative z-10">
+                    <span class="relative inline-block pb-2">
+                        Tools
+                        <span class="absolute bottom-0 left-0 w-full h-1 bg-cyan-400 rounded-full"></span>
+                    </span>
+                </h2>
+                <div class="flex flex-wrap justify-center gap-4">
+                    
+                        <div class="bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-lg p-2 px-4 shadow-md text-gray-300 hover:shadow-[0_0_15px_theme(colors.cyan.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out text-sm">
+                            ChatGPT | Gemini
+                        </div>
+                    
+                        <div class="bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-lg p-2 px-4 shadow-md text-gray-300 hover:shadow-[0_0_15px_theme(colors.cyan.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out text-sm">
+                            n8n
+                        </div>
+                    
+                        <div class="bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-lg p-2 px-4 shadow-md text-gray-300 hover:shadow-[0_0_15px_theme(colors.cyan.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out text-sm">
+                            Lovable | Cursor etc
+                        </div>
+                    
+                        <div class="bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-lg p-2 px-4 shadow-md text-gray-300 hover:shadow-[0_0_15px_theme(colors.cyan.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out text-sm">
+                            Suno v5 | Eleven labs etc
+                        </div>
+                    
+                        <div class="bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-lg p-2 px-4 shadow-md text-gray-300 hover:shadow-[0_0_15px_theme(colors.cyan.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out text-sm">
+                            Syllaby
+                        </div>
+                    
+                        <div class="bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-lg p-2 px-4 shadow-md text-gray-300 hover:shadow-[0_0_15px_theme(colors.cyan.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out text-sm">
+                            Text to video
+                        </div>
+                    
+                        <div class="bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-lg p-2 px-4 shadow-md text-gray-300 hover:shadow-[0_0_15px_theme(colors.cyan.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out text-sm">
+                            Image to Video
+                        </div>
+                    
+                        <div class="bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-lg p-2 px-4 shadow-md text-gray-300 hover:shadow-[0_0_15px_theme(colors.cyan.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out text-sm">
+                            Github
+                        </div>
+                    
+                        <div class="bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-lg p-2 px-4 shadow-md text-gray-300 hover:shadow-[0_0_15px_theme(colors.cyan.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out text-sm">
+                            Adobe Premiere | Photoshop
+                        </div>
+                    
+                        <div class="bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-lg p-2 px-4 shadow-md text-gray-300 hover:shadow-[0_0_15px_theme(colors.cyan.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out text-sm">
+                            Capcut | Inshot | Snapseed
+                        </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl sm:text-4xl font-bold text-center text-purple-400 mb-12 relative z-10">
+                    <span class="relative inline-block pb-2">
+                        Projects
+                        <span class="absolute bottom-0 left-0 w-full h-1 bg-cyan-400 rounded-full"></span>
+                    </span>
+                </h2>
+                <div class="flex flex-wrap justify-center gap-8">
+                    
+                        <div class="max-w-sm w-full bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-xl shadow-lg hover:shadow-[0_0_15px_theme(colors.purple.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out overflow-hidden">
+                            <img src="https://raw.githubusercontent.com/Najar-Zamir/my-images/main/Portfolio%20Web%20development.webp" alt="Web Devlopment" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold text-white mb-2">Web Devlopment</h3>
+                                <p class="text-gray-400 text-sm mb-4">Developed responsive, fast, and modern websites with clean UI, smooth functionality, and optimized performance.</p>
+                                
+                                    <a href="https://drive.google.com/drive/folders/1UPO_Djlz2ASsR_HVSkKXgMkbqkIfZpnn?usp=drive_link" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 bg-cyan-600 text-white text-sm font-medium rounded-lg hover:bg-cyan-500 transition-colors duration-300 ease-in-out">
+                                        Visit Project
+                                    </a>
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="max-w-sm w-full bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-xl shadow-lg hover:shadow-[0_0_15px_theme(colors.purple.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out overflow-hidden">
+                            <img src="https://raw.githubusercontent.com/Najar-Zamir/my-images/main/Portfolio%20Graphic%20Designing.webp" alt="Designing" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold text-white mb-2">Designing</h3>
+                                <p class="text-gray-400 text-sm mb-4">Designed creative graphics with modern layouts, clean typography, and visually appealing compositions tailored to brand identity.</p>
+                                
+                                    <a href="https://drive.google.com/drive/folders/11eVIKdqJNBBNy_p6jXuM3PfPF6ppbZli?usp=drive_link" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 bg-cyan-600 text-white text-sm font-medium rounded-lg hover:bg-cyan-500 transition-colors duration-300 ease-in-out">
+                                        Visit Project
+                                    </a>
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="max-w-sm w-full bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-xl shadow-lg hover:shadow-[0_0_15px_theme(colors.purple.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out overflow-hidden">
+                            <img src="https://raw.githubusercontent.com/Najar-Zamir/my-images/main/Portfolio%20photography.webp" alt="Photography" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold text-white mb-2">Photography</h3>
+                                <p class="text-gray-400 text-sm mb-4">Captured high-quality photos with strong lighting, composition, and attention to detail to highlight the subject’s best features.</p>
+                                
+                                    <a href="https://www.instagram.com/zahid_ayoub_najar?igsh=aWlheDA1NmNudnIz" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 bg-cyan-600 text-white text-sm font-medium rounded-lg hover:bg-cyan-500 transition-colors duration-300 ease-in-out">
+                                        Visit Project
+                                    </a>
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="max-w-sm w-full bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-xl shadow-lg hover:shadow-[0_0_15px_theme(colors.purple.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out overflow-hidden">
+                            <img src="https://raw.githubusercontent.com/Najar-Zamir/my-images/main/Portfolio%20Video%20Editing.webp" alt="Video Editting" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold text-white mb-2">Video Editting</h3>
+                                <p class="text-gray-400 text-sm mb-4">Edited and enhanced videos with smooth transitions, color correction, sound balancing, and modern motion graphics to deliver high-quality, engaging content.</p>
+                                
+                                    <a href="https://drive.google.com/drive/folders/11WPOkFFaKsc68g7r980ijVIMpffv0bp0?usp=drive_link" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 bg-cyan-600 text-white text-sm font-medium rounded-lg hover:bg-cyan-500 transition-colors duration-300 ease-in-out">
+                                        Visit Project
+                                    </a>
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="max-w-sm w-full bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-xl shadow-lg hover:shadow-[0_0_15px_theme(colors.purple.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out overflow-hidden">
+                            <img src="https://raw.githubusercontent.com/Najar-Zamir/my-images/main/Portfolio%20self%20reel.webp" alt="Self-Reels" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold text-white mb-2">Self-Reels</h3>
+                                <p class="text-gray-400 text-sm mb-4">Created engaging self-reels with clean edits, smooth transitions, and creative storytelling to highlight personality and style.</p>
+                                
+                                    <a href="https://www.instagram.com/najar_zamir" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 bg-cyan-600 text-white text-sm font-medium rounded-lg hover:bg-cyan-500 transition-colors duration-300 ease-in-out">
+                                        Visit Project
+                                    </a>
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="max-w-sm w-full bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-xl shadow-lg hover:shadow-[0_0_15px_theme(colors.purple.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out overflow-hidden">
+                            <img src="https://raw.githubusercontent.com/Najar-Zamir/my-images/main/Portfolio%20others.webp" alt="Others" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold text-white mb-2">Others</h3>
+                                <p class="text-gray-400 text-sm mb-4">Handled a variety of creative and technical tasks across different domains, delivering high-quality results with versatility and attention to detail.</p>
+                                
+                                    <a href="https://drive.google.com/drive/folders/1h4fUaCTx8R59D-5FjrrJkrT8SIxNW_GV?usp=drive_link" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 bg-cyan-600 text-white text-sm font-medium rounded-lg hover:bg-cyan-500 transition-colors duration-300 ease-in-out">
+                                        Visit Project
+                                    </a>
+                                
+                            </div>
+                        </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl sm:text-4xl font-bold text-center text-purple-400 mb-12 relative z-10">
+                    <span class="relative inline-block pb-2">
+                        Experience
+                        <span class="absolute bottom-0 left-0 w-full h-1 bg-cyan-400 rounded-full"></span>
+                    </span>
+                </h2>
+                <div class="flex flex-wrap justify-center gap-8">
+                    
+                        <div class="max-w-2xl w-full bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-xl shadow-lg p-6 hover:shadow-[0_0_15px_theme(colors.cyan.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out flex flex-col">
+                            <div class="flex flex-col md:flex-row items-center">
+                                <img src="">
+                                <div class="flex-grow text-center md:text-left">
+                                    <h3 class="text-xl font-semibold text-white">Ecommerce Executive at <a href="www.gyawun.com" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-300 transition-colors duration-300 ease-in-out">Gyawun Media pvt. ltd.</a></h3>
+                                    <p class="text-gray-400">2024-2025</p>
+                                    <p class="text-gray-300 text-sm mt-2">Managed product listings on e-commerce platforms for optimal visibility. Supported customer inquiries through email and social media channels. Assisted in inventory management and stock level monitoring.</p>
+                                </div>
+                            </div>
+                        </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Qualifications Section -->
+        <section id="qualifications" class="py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl sm:text-4xl font-bold text-center text-purple-400 mb-12 relative z-10">
+                    <span class="relative inline-block pb-2">
+                        Qualifications
+                        <span class="absolute bottom-0 left-0 w-full h-1 bg-cyan-400 rounded-full"></span>
+                    </span>
+                </h2>
+                <div class="flex flex-wrap justify-center gap-8">
+                    
+                        <div class="max-w-md w-full bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-xl shadow-lg p-6 text-center hover:shadow-[0_0_15px_theme(colors.purple.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out">
+                            <h3 class="text-xl font-semibold text-white mb-1">BCA (Bachelors of Computer Application)</h3>
+                            <p class="text-cyan-400">NIELIT Srinagar</p>
+                            <p class="text-gray-400 text-sm">2021-2024</p>
+                        </div>
+                    
+                        <div class="max-w-md w-full bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-xl shadow-lg p-6 text-center hover:shadow-[0_0_15px_theme(colors.purple.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out">
+                            <h3 class="text-xl font-semibold text-white mb-1">Commerce</h3>
+                            <p class="text-cyan-400">GHSS Panzan Chadoora</p>
+                            <p class="text-gray-400 text-sm">2019-2020</p>
+                        </div>
+                    
+                        <div class="max-w-md w-full bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-xl shadow-lg p-6 text-center hover:shadow-[0_0_15px_theme(colors.purple.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out">
+                            <h3 class="text-xl font-semibold text-white mb-1">HIgh Schooling</h3>
+                            <p class="text-cyan-400">Central Valley Educational Society</p>
+                            <p class="text-gray-400 text-sm">2008</p>
+                        </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl sm:text-4xl font-bold text-center text-purple-400 mb-12 relative z-10">
+                    <span class="relative inline-block pb-2">
+                        Certifications
+                        <span class="absolute bottom-0 left-0 w-full h-1 bg-cyan-400 rounded-full"></span>
+                    </span>
+                </h2>
+                <div class="flex flex-wrap justify-center gap-8">
+                    
+                        <div class="max-w-md w-full bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-xl shadow-lg p-6 text-center hover:shadow-[0_0_15px_theme(colors.purple.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out">
+                            <h3 class="text-xl font-semibold text-white mb-1">Ecommerce Executive</h3>
+                            <p class="text-cyan-400">Gyawun. pvt. ltd.</p>
+                            <p class="text-gray-400 text-sm">2025</p>
+                        </div>
+                    
+                        <div class="max-w-md w-full bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-xl shadow-lg p-6 text-center hover:shadow-[0_0_15px_theme(colors.purple.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out">
+                            <h3 class="text-xl font-semibold text-white mb-1">Hub Incharge</h3>
+                            <p class="text-cyan-400">Shadowfax</p>
+                            <p class="text-gray-400 text-sm">2024</p>
+                        </div>
+                    
+                        <div class="max-w-md w-full bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-xl shadow-lg p-6 text-center hover:shadow-[0_0_15px_theme(colors.purple.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out">
+                            <h3 class="text-xl font-semibold text-white mb-1">AI Expert</h3>
+                            <p class="text-cyan-400">Google</p>
+                            <p class="text-gray-400 text-sm">2025</p>
+                        </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        </div></div></div></div></div></section><section id="contact" class="py-16 md:py-24"><div class="container mx-auto px-4 md:px-8"><div class="flex items-center gap-4 mb-8 md:mb-12"><div class="text-cyan-400"><svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></div><h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">Get In Touch</h2></div><div class="max-w-2xl mx-auto text-center"><p class="text-slate-400 mb-8">I&#x27;m currently open to new opportunities. Feel free to reach out via email or connect with me on social media.</p><div class="flex flex-col sm:flex-row justify-center items-center gap-6 mb-8"><a href="mailto:najarzamir@gmail.com" class="flex items-center gap-2 text-lg hover:text-cyan-400 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg> najarzamir@gmail.com</a><a href="tel:91-7006-815072" class="flex items-center gap-2 text-lg hover:text-cyan-400 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg> 91-8492968959</a></div><div class="flex justify-center gap-6"><a href="https://github.com/Najar-Zamir" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-cyan-400 transition-colors">GitHub</a><a href="https://www.linkedin.com/in/najar-zamir-035525271" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-cyan-400 transition-colors">LinkedIn</a> <a href="najarzamir@gmail.com" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-cyan-400 transition-colors">Email</a></div></div></div></section>
+  
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900/80 backdrop-blur-md py-6 mt-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400 text-sm">
+            <p>© 2024 Najar Zamir. All Rights Reserved.</p><p> Designed by 
+  <a href="https://wa.me/918492968959?text=Hello%20Najar%20Zamir" style="text-decoration: underline;"> Najar Zamir🔗 </a> </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu Toggle -->
+    <script>
+      const menuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (menuButton && mobileMenu) {
+        menuButton.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+      }
+    </script>
+
+    <!-- JavaScript for Animated Professions -->
+    <script>
+      const professions = ["Creative Web Developer & AI Expert","UI/UX and Graphic Designer","Video Editor and Photographer"];
+      if (professions && professions.length > 1) {
+        const el = document.getElementById('animated-profession');
+        if (el) {
+          // Set initial text content
+          el.textContent = professions[0];
+          let index = 0;
+          setInterval(() => {
+            el.classList.add('opacity-0', '-translate-y-4');
+            setTimeout(() => {
+              index = (index + 1) % professions.length;
+              el.textContent = professions[index];
+              el.classList.remove('opacity-0', '-translate-y-4');
+            }, 500); // This should match transition duration
+          }, 1500); // Time between changes
+        }
+      }
+    </script>
+</body>
+</html>
