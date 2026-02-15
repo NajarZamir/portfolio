@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Najar Zamir - Creative Web Developer & AI Expert</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyan: {
+                            400: '#22d3ee',
+                            500: '#06b6d4',
+                            600: '#0891b2',
+                        },
+                        purple: {
+                            400: '#c084fc',
+                            500: '#a855f7',
+                        },
+                        gray: {
+                            950: '#0a0a0a',
+                            900: '#1a1a1a',
+                            800: '#262626',
+                            700: '#3f3f46',
+                            600: '#52525b',
+                            400: '#a1a1aa',
+                            200: '#e4e4e7',
+                        }
+                    },
+                    boxShadow: {
+                        '3d': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            },
+            plugins: [
+                function({ addUtilities, theme }) {
+                    addUtilities({
+                        '.text-glow-cyan': {
+                            'text-shadow': `0 0 15px ${theme('colors.cyan.500')}99`, // ~60% opacity
+                        },
+                        '.text-glow-purple': {
+                            'text-shadow': `0 0 15px ${theme('colors.purple.500')}99`,
+                        },
+                        '.focus-glow-cyan:focus': {
+                            'box-shadow': `0 0 10px ${theme('colors.cyan.500')}80`, // ~50% opacity
+                            'border-color': theme('colors.cyan.400'),
+                        },
+                    }, ['responsive', 'hover', 'focus'])
+                }
+            ]
+        }
+    </script>
+    <style>
+        /* Custom styles for accessibility/fallback for text-shadow, not directly Tailwind */
+        /* This is for browsers that might not support CSS variables or specific text-shadow syntax well with Tailwind CDN */
+        /* For the most part, Tailwind's classes are sufficient */
+    </style>
+</head>
+<body class="bg-gray-950 text-gray-200 font-sans antialiased">
+
+    <!-- Navigation Bar -->
+    
+
+        <!-- Project -->
+      
+        <section id="Websites" class="py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl sm:text-4xl font-bold text-center text-purple-400 mb-12 relative z-10">
+                    <span class="relative inline-block pb-2">
+                        Websites
+                        <span class="absolute bottom-0 left-0 w-full h-1 bg-cyan-400 rounded-full"></span>
+                    </span>
+                </h2>
+                <div class="flex flex-wrap justify-center gap-8">
+                    
+                        <div class="max-w-sm w-full bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-xl shadow-lg hover:shadow-[0_0_15px_theme(colors.purple.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out overflow-hidden">
+                            <img src="https://raw.githubusercontent.com/Najar-Zamir/my-images/main/IMG_20260213_194157.jpg" alt="Budget Stitch" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold text-white mb-2">Budget Stitch</h3>
+                                <p class="text-gray-400 text-sm mb-4">Designed and developed Budget Stitch website, showcasing tailor services, portfolio, and contact info. Implemented a responsive design, enhancing user experience and driving business growth.</p>
+                                
+                                    <a href="https://najar-zamir.github.io/Budget-Stitch/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 bg-cyan-600 text-white text-sm font-medium rounded-lg hover:bg-cyan-500 transition-colors duration-300 ease-in-out">
+                                        Visit 
+                                    </a>
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="max-w-sm w-full bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-xl shadow-lg hover:shadow-[0_0_15px_theme(colors.purple.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out overflow-hidden">
+                            <img src="https://raw.githubusercontent.com/NajarZamir/Client-Uploads/main/IMG_20260215_204255.jpg" alt="My Beayty Hair Salon" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold text-white mb-2">My Beayty Hair Salon</h3>
+                                <p class="text-gray-400 text-sm mb-4">Designed and developed a website for Hair Beauty Salon, showcasing services, pricing, and contact information. Implemented a responsive design with features like service galleries, appointment booking integration, and customer testimonials, enhancing user experience and driving business growth.</p>
+                                
+                                    <a href="https://najar-zamir.github.io/My-Beauty-Hair-Saloon/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 bg-cyan-600 text-white text-sm font-medium rounded-lg hover:bg-cyan-500 transition-colors duration-300 ease-in-out">
+                                        Visit
+                                    </a>
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="max-w-sm w-full bg-gray-800/50 backdrop-blur-lg border border-white/10 rounded-xl shadow-lg hover:shadow-[0_0_15px_theme(colors.purple.500/0.7)] hover:-translate-y-2 transition-all duration-300 ease-in-out overflow-hidden">
+                            <img src="https://raw.githubusercontent.com/NajarZamir/Client-Uploads/main/IMG_20260215_204226.jpg" alt="Le-Maple Restaurant" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold text-white mb-2">Le-Maple Restaurant</h3>
+                                <p class="text-gray-400 text-sm mb-4">Designed and developed the Lemaple website, a responsive online platform showcasing the restaurant's menu, location, and contact information. Implemented a user-friendly interface with features like online menu browsing, location mapping, and contact form integration, enhancing customer engagement and driving business growth.</p>
+                                
+                                    <a href="https://najar-zamir.github.io/Le-maple-restaurant/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 bg-cyan-600 text-white text-sm font-medium rounded-lg hover:bg-cyan-500 transition-colors duration-300 ease-in-out">
+                                        Visit
+                                    </a>
+                                
+                            </div>
+                        </div>
+                    
+                
+                    
+                    
+              
+                    
+                </div>
+            </div>
+            <div class="p-6">
+                                
+                                
+                                    <a href="index.html" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 bg-cyan-600 text-white text-sm font-medium rounded-lg hover:bg-pink-500 transition-colors duration-300 ease-in-out">
+                                        Return
+                                    </a>
+                                
+                            </div>
+        </section>
+            </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900/80 backdrop-blur-md py-6 mt-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400 text-sm">
+            <p>© 2024 Najar Zamir. All Rights Reserved.</p><p> Designed by 
+  <a href="https://wa.me/918492968959?text=Hello%20Najar%20Zamir" style="text-decoration: underline;"> Najar Zamir🔗 </a> </p>
+        </div>
+    </footer>
+
+ 
+</body>
+</html>
